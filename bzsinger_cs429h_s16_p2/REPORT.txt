@@ -1,0 +1,5 @@
+- The error() function calls longjmp. What does longjmp do? Why is it needed?
+
+At the beginning of the program, in the 'interpret' function, the program calls the function 'setjmp'. This method essentially takes a snapshot of the memory's registers (incl. stack pointer, frame pointer, and the program counter) before the program runs and saves their content. longjmp restores the registers to their 'original' values. This makes sure that if the program ends with a call to the 'error' function, the program doesn't have to return to the normal flow of control and can exit without having to go through function return calls and the like. longjmp transfers control to where setjmp was called.
+
+Sources: http://web.eecs.utk.edu/~huangj/cs360/360/notes/Setjmp/lecture.html, http://www.cplusplus.com/reference/csetjmp/longjmp/ 
