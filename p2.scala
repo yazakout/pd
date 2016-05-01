@@ -48,13 +48,34 @@ class pd {
         true
       }
       
+      def isIf() : Boolean = {
+        true
+      }
+      
+      def isWhile() : Boolean = {
+        true
+      }
+      
+      def isRightBlock() : Boolean = {
+        true
+      }
+      
+      def isElse() : Boolean = {
+       true 
+      }
+      
       def getId() : String = {
         ""
+      }
+      
+      def isLeftBlock() : Boolean = {
+        true
       }
       
       def expression() : Int = {
         1
       }
+      
       
       def statement(value:Int) : Int = {
         if(isId()) {
@@ -69,7 +90,46 @@ class pd {
           if (isSemi())
             consume(1)
           1
-        } else 0
+        } else if (isLeftBlock()) {
+            consume(1)
+            seq(value)
+            if (!isRightBlock())
+              error()
+            1
+        } else if (isIf()) {
+          consume(2)
+          var c : Int = expression()
+          if ((c != 0) && (value != 0))
+             statement(1)
+          else
+             statement(0)
+          if (isElse()) {
+            consume(4)
+            if ((c == 0) && (value == 0)) 
+                statement(1)
+            else
+                statement(0)
+            0
+          }
+          1
+        } else if (isWhile()) {
+          consume(5)
+          var progTextCopy : String = programText.substring(index)
+          var c : Int = 0
+          do {
+            programText = progTextCopy
+            c = expression()
+            if (c != 0)
+              statement(1)
+            else 
+              statement (0)
+          } while ((c != 0) && (value != 0))
+          1
+         } else if (isSemi()) {
+           consume(1)
+           1
+         } else 
+           0
       }
       
       def seq(value:Int) {
@@ -92,4 +152,4 @@ class pd {
         interpret(args)
       }
     }
- }
+ 
