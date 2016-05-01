@@ -4,9 +4,10 @@ class pd {
       
   object pd {
     val symTable : Map[String, Int] = Map()
-    val currName : Int = 0;
-
-    val index : Int = 0;
+    var currName : String = ""
+    var index : Int = 0
+    var programText : String = ""
+    var numNames : Int = 0
     
 
       def get(id:String)  : Int = {
@@ -14,21 +15,21 @@ class pd {
       }
     
       def set(id:String, value:Int) {
-        /**if (symTable.contains(id))*/ 
           symTable + (id -> value)
       }
       
       def consume(i:Int) {
-        
+        while(isSpace())
+          index += 1 /**The lack of "++" is disappointing*/
       }
       
       def error() {
-        println("error at ", programText.substring(index))
+        println(programText.substring(index))
         
       }
       
       def isId() : Boolean = {
-       true
+        true
       }
       
       def isEq() : Boolean = {
@@ -40,6 +41,10 @@ class pd {
       }
       
       def isSemi() : Boolean = {
+        true
+      }
+      
+      def isSpace() : Boolean = {
         true
       }
       
@@ -78,10 +83,13 @@ class pd {
       }
       
       def interpret(prog:String) {
-        def programText : String = prog
         program()
+        numNames = 20;
       }
       
-  }
+      def main (args: String){
+        programText = args;
+        interpret(args)
+      }
+    }
  }
-
