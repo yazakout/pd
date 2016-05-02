@@ -28,54 +28,75 @@ class pd {
         
       }
       
+      
+      
+      def getInt() : Int = {
+        var currentNum : Int = -1
+        var index : Int = 0
+        while (programText.charAt(index).isDigit || programText.charAt(index).equals("_")) {
+          if (programText.charAt(index).isDigit) {
+            if (currentNum < 0)
+              currentNum = programText.charAt(index) - '0'
+            else
+              currentNum = currentNum * 10 + (programText.charAt(index) - '0')
+          }
+          index += 1
+        }
+        currentNum
+      }
+      
       def isId() : Boolean = {
-        true
-      }
-      
-      def isEq() : Boolean = {
-        true
-      }
-      
-      def isEnd() : Boolean = {
-        true
-      }
-      
-      def isSemi() : Boolean = {
-        true
-      }
-      
-      def isSpace() : Boolean = {
-        true
-      }
-      
-      def isIf() : Boolean = {
-        true
-      }
-      
-      def isWhile() : Boolean = {
-        true
-      }
-      
-      def isRightBlock() : Boolean = {
-        true
-      }
-      
-      def isElse() : Boolean = {
-       true 
+        var i : Int = 0;
+        while (programText.charAt(i).isLetterOrDigit && (index != 0)) 
+          i += 1
+        !((i == 0) && programText.substring(index, i).equals("else")
+            && programText.substring(index, i).equals("while")
+            && programText.substring(index, i).equals("if"))
       }
       
       def getId() : String = {
-        ""
+        var i : Int = index;
+        while (programText.charAt(i).isLetterOrDigit) {
+          
+        }
+        var n : String = programText.substring(index, i)
+        if (n.equals("else") || n.equals("if") || n.equals("while")) 
+          0
+        n
       }
       
       def isLeftBlock() : Boolean = {
         true
       }
       
+      def isInt() : Boolean = {
+        programText.charAt(index).isDigit
+      }
+      
       def expression() : Int = {
         1
       }
       
+      def e3() : Int = {
+        var value : Int = e2()
+        while (isPlus()) {
+          consume(1)
+          value = value + e2()
+        }
+        value
+      }
+      
+      def e4 () : Int = {
+        var value : Int = e3()
+        while (isEqEq()) {
+          consume(2)
+          if (value == e3())
+            value = 1
+          else 
+            value = 0
+        }
+        return value
+      }
       
       def statement(value:Int) : Int = {
         if(isId()) {
@@ -148,8 +169,8 @@ class pd {
       }
       
       def main (args: String){
-        programText = args;
+        programText = args.replace(" ", "");
         interpret(args)
       }
     }
- 
+ }
