@@ -13,10 +13,11 @@
           return symTable.getOrElse(id, -1)
       }
     
-      def set(id:String, value:Int) {
+     def set(id:String, value:Int) {
+          println(id + ":" + value)
           symTable + (id -> value)
       }
-      
+ 
       def consume(i:Int) {
         while(isSpace())
           index += 1 /**The lack of "++" is disappointing*/
@@ -24,7 +25,8 @@
       }
       
       def error() {
-        print(s"Error at " + programText.substring(index));
+        println("Error at " + programText.substring(index));
+	System.exit(1)
       }
       
       def getInt() : Int = {
@@ -52,9 +54,10 @@
       }
       
       def getId() : String = {
+	println("getId")
         var i : Int = index;
-        while (programText.charAt(i).isLetterOrDigit) {
-          
+        while (programText.charAt(i).isLetterOrDigit && i <= (programText.length() - 1)) {
+         i+=1 
         }
         var n : String = programText.substring(index, i)
         if (n.equals("else") || n.equals("if") || n.equals("while")) 
@@ -71,7 +74,7 @@
       }
       
       def isMul() : Boolean = {
-        programText.charAt(index) == '*'
+        programText.charAt(index).equals('*')
       }
       
       def isPlus() : Boolean = {
@@ -83,7 +86,7 @@
       }
       
       def isEnd() : Boolean = {
-        programText.charAt(index).equals(null)
+	index == programText.length() - 1
       }
 
       def isWhile() : Boolean = {
@@ -122,8 +125,18 @@
         programText.charAt(index).isDigit
       }
       
+      def getIntLength() : Int = {
+	var spaces : Int = 0
+	var i : Int = 0
+        while (programText.charAt(index + i).isDigit || programText.charAt(index + i) == '_') {
+		spaces += 1
+		i += 1
+	}
+	spaces
+      }
       def expression() : Int = {
-        1
+	println("expression")
+	e4()
       }
       
       def e1() : Int = {
@@ -136,6 +149,8 @@
           v
         } else if (isInt()) {
           var v : Int = getInt()
+	  var spaces : Int = getIntLength()
+	  consume(spaces)
           v
         } else if (isId()) {
           var id : String = getId()
@@ -146,12 +161,13 @@
       }
       
       def e2() : Int = {
-        var value : Int = e2()
+        var value : Int = e1()
         while (isMul()) {
           consume(1)
+	println(value)
           value = value * e1()
         }
-        return value
+        value
       }
       
       def e3() : Int = {
@@ -177,7 +193,9 @@
       
       def statement(value:Int) : Int = {
         if(isId()) {
+		println("isId")
           val id : String = getId()
+	println("returned")
           consume(id.length())
           if (!isEq())
             error()
@@ -189,12 +207,14 @@
             consume(1)
           1
         } else if (isLeftBlock()) {
+		println("isLeft")
             consume(1)
             seq(value)
             if (!isRightBlock())
               error()
             1
         } else if (isIf()) {
+		println("isIf")
           consume(2)
           var c : Int = expression()
           if ((c != 0) && (value != 0))
@@ -211,6 +231,7 @@
           }
           1
         } else if (isWhile()) {
+		println("isWhile")
           consume(5)
           var progTextCopy : String = programText.substring(index)
           var c : Int = 0
@@ -224,6 +245,7 @@
           } while ((c != 0) && (value != 0))
           1
          } else if (isSemi()) {
+	println("isSemi")	
            consume(1)
            1
          } else 
@@ -231,23 +253,26 @@
       }
       
       def seq(value:Int) {
+	println("seq")
         while(statement(value) == 1) {}
       }
       
       def program() {
+	println("program")
         seq(1)
         if (!isEnd())
           error()
       }
       
       def interpret(prog:String) {
+	println("interpret")
         program()
         numNames = 20;
       }
       
       def main (args: Array[String]) : Unit = {
-	println("blah")
         programText = args(0).replace(" ", "")
+	println(programText)
         interpret(args(0))
       }
     }
