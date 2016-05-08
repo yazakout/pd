@@ -1,6 +1,5 @@
   import scala.collection.mutable.{Map, SynchronizedMap, HashMap}
 
-class pd {
       
   object pd {
     val symTable : Map[String, Int] = Map()
@@ -248,8 +247,8 @@ class pd {
       
       def main (args: Array[String]) : Unit = {
 	println("blah")
-        /*programText = args[1].replace(" ", "")*/
-        /*interpret(args[1])*/
+        programText = args(0).replace(" ", "")
+        interpret(args(0))
       }
     }
- }
+
