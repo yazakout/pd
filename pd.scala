@@ -27,7 +27,7 @@
       }
       
       def error() {
-        println("Error at " + programText.substring(index));
+        println("error at " + "'" + programText.substring(index) + "'");
 	System.exit(1)
       }
       
