@@ -21,6 +21,7 @@ class pd {
       def consume(i:Int) {
         while(isSpace())
           index += 1 /**The lack of "++" is disappointing*/
+        index += i
       }
       
       def error() {
