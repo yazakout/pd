@@ -246,10 +246,10 @@ class pd {
         numNames = 20;
       }
       
-      def main (args: String){
+      def main (args: Array[String]) : Unit = {
 	println("blah")
-        programText = args.replace(" ", "");
-        interpret(args)
+        /*programText = args[1].replace(" ", "")*/
+        /*interpret(args[1])*/
       }
     }
  }
