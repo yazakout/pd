@@ -152,7 +152,6 @@
           consume(1)
           var v :Int = expression()
           if (!isRight()) { 
-		println("fuck this rightParen")
             error()
 	}
           consume(1)
@@ -168,7 +167,6 @@
           return get(id)
         } else {
 	
-		println("fuck this e1")
 	error
 	}
         return 0
@@ -223,7 +221,6 @@
             consume(1)
             seq(value)
             if (!isRightBlock()) {
-		println("fuck this rightBlock")
              error()
             }
 	    consume(1)
@@ -249,7 +246,8 @@
           var progTextCopy : String = programText.substring(index)
           var c : Int = 0
           do {
-            programText = progTextCopy
+	    programText = progTextCopy
+	    index = 0;
             c = expression()
             if (c != 0)
               statement(1)
@@ -275,7 +273,6 @@
       def program() {
         seq(1)
         if (!isEnd()) {
-	  println("fuck you")
           error()
 	}
       }
