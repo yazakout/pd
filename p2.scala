@@ -1,4 +1,4 @@
-import scala.collection.mutable.{Map, SynchronizedMap, HashMap}
+  import scala.collection.mutable.{Map, SynchronizedMap, HashMap}
 
 class pd {
       
@@ -69,6 +69,22 @@ class pd {
       def isRightBlock() : Boolean = {
         programText.charAt(index) == '}'
       }
+      
+      def isMul() : Boolean = {
+        programText.charAt(index) == '*'
+      }
+      
+      def isPlus() : Boolean = {
+        programText.charAt(index) == '+'
+      }
+      
+      def isSpace() : Boolean = {
+        programText.charAt(index) == ' '
+      }
+      
+      def isEnd() : Boolean = {
+        programText.charAt(index).equals(null)
+      }
 
       def isWhile() : Boolean = {
         programText.substring(index, index + 5).equals("while")
@@ -108,6 +124,34 @@ class pd {
       
       def expression() : Int = {
         1
+      }
+      
+      def e1() : Int = {
+        if (isLeft()) {
+          consume(1)
+          var v :Int = expression()
+          if (!isRight()) 
+            error()
+          consume(1)
+          v
+        } else if (isInt()) {
+          var v : Int = getInt()
+          v
+        } else if (isId()) {
+          var id : String = getId()
+          consume(id.length()) 
+          return get(id)
+        } else error
+        0
+      }
+      
+      def e2() : Int = {
+        var value : Int = e2()
+        while (isMul()) {
+          consume(1)
+          value = value * e1()
+        }
+        return value
       }
       
       def e3() : Int = {
@@ -207,4 +251,3 @@ class pd {
       }
     }
  }
-
