@@ -14,5 +14,8 @@ clean :
 	rm -f *.d
 	rm -f *.o
 	rm -f pd
+	rm -f *.BAK
+	rm -f *.class
+	rm -f *.out
 
 -include *.d
