@@ -31,58 +31,60 @@
       
       def getInt() : Int = {
         var currentNum : Int = -1
-        var index : Int = 0
-        while (programText.charAt(index).isDigit || programText.charAt(index).equals("_")) {
-          if (programText.charAt(index).isDigit) {
-            if (currentNum < 0)
-              currentNum = programText.charAt(index) - '0'
-            else
-              currentNum = currentNum * 10 + (programText.charAt(index) - '0')
+        var i : Int = 0
+        while (programText.charAt(index + i).isDigit || programText.charAt(index + i).equals("_")) {
+          if (programText.charAt(index + i).isDigit) {
+            if (currentNum < 0) {
+              currentNum = programText.charAt(index + i) - '0'
+           } else {
+              currentNum = currentNum * 10 + (programText.charAt(index + i) - '0')
+		}
           }
-          index += 1
+          i += 1
         }
-        currentNum
+        return currentNum
       }
       
       def isId() : Boolean = {
+	if (isEnd())
+		return false
         var i : Int = 0;
         while (programText.charAt(i).isLetterOrDigit && (index != 0)) 
           i += 1
-        !((i == 0) && programText.substring(index, i).equals("else")
+        return !((i == 0) && programText.substring(index, i).equals("else")
             && programText.substring(index, i).equals("while")
             && programText.substring(index, i).equals("if"))
       }
       
       def getId() : String = {
-	println("getId")
         var i : Int = index;
         while (programText.charAt(i).isLetterOrDigit && i <= (programText.length() - 1)) {
          i+=1 
         }
         var n : String = programText.substring(index, i)
         if (n.equals("else") || n.equals("if") || n.equals("while")) 
-          0
-        n
+          return ""
+        return n
       }
       
       def isLeftBlock() : Boolean = {
-        programText.charAt(index) == '{'
+        (!isEnd() && programText.charAt(index) == '{')
       }
 
       def isRightBlock() : Boolean = {
-        programText.charAt(index) == '}'
+        (!isEnd() && programText.charAt(index) == '}')
       }
       
       def isMul() : Boolean = {
-        programText.charAt(index).equals('*')
+        (!isEnd() && programText.charAt(index) == '*')
       }
       
       def isPlus() : Boolean = {
-        programText.charAt(index) == '+'
+        (!isEnd() && programText.charAt(index) == '+')
       }
       
       def isSpace() : Boolean = {
-        programText.charAt(index) == ' '
+        (!isEnd() && programText.charAt(index) == ' ')
       }
       
       def isEnd() : Boolean = {
@@ -90,39 +92,39 @@
       }
 
       def isWhile() : Boolean = {
-        programText.substring(index, index + 5).equals("while")
+        (!isEnd() && programText.substring(index, index + 5).equals("while"))
       }
 
       def isIf() : Boolean = {
-        programText.substring(index, index + 2).equals("if")
+        (!isEnd() && programText.substring(index, index + 2).equals("if"))
       }
 
       def isElse() : Boolean = {
-        programText.substring(index, index + 4).equals("else")
+        (!isEnd() && programText.substring(index, index + 4).equals("else"))
       }
 
       def isSemi() : Boolean = {
-        programText.charAt(index) == ';'
+        (!isEnd() && programText.charAt(index) == ';')
       }
 
       def isEq() : Boolean = {
-        programText.charAt(index) == '='
+        (!isEnd() && programText.charAt(index) == '=')
       }
 
       def isEqEq() : Boolean = {
-        programText.charAt(index) == '=' && programText.charAt(index) == '='
+        (!isEnd() && programText.charAt(index) == '=' && programText.charAt(index + 1) == '=')
       }
 
       def isLeft() : Boolean = {
-        programText.charAt(index) == '('
+        (!isEnd() && programText.charAt(index) == '(')
       }
 
       def isRight() : Boolean = {
-        programText.charAt(index) == ')'
+        (!isEnd() && programText.charAt(index) == ')')
       }
       
       def isInt() : Boolean = {
-        programText.charAt(index).isDigit
+        (!isEnd() && programText.charAt(index).isDigit)
       }
       
       def getIntLength() : Int = {
@@ -132,11 +134,10 @@
 		spaces += 1
 		i += 1
 	}
-	spaces
+	return spaces
       }
       def expression() : Int = {
-	println("expression")
-	e4()
+	return e4()
       }
       
       def e1() : Int = {
@@ -146,37 +147,37 @@
           if (!isRight()) 
             error()
           consume(1)
-          v
+          return v
         } else if (isInt()) {
           var v : Int = getInt()
 	  var spaces : Int = getIntLength()
 	  consume(spaces)
-          v
+          return v
         } else if (isId()) {
           var id : String = getId()
           consume(id.length()) 
           return get(id)
         } else error
-        0
+        return 0
       }
       
       def e2() : Int = {
         var value : Int = e1()
         while (isMul()) {
           consume(1)
-	println(value)
           value = value * e1()
         }
-        value
+        return value
       }
       
       def e3() : Int = {
         var value : Int = e2()
         while (isPlus()) {
+	  
           consume(1)
           value = value + e2()
         }
-        value
+        return value
       }
       
       def e4 () : Int = {
@@ -193,9 +194,7 @@
       
       def statement(value:Int) : Int = {
         if(isId()) {
-		println("isId")
           val id : String = getId()
-	println("returned")
           consume(id.length())
           if (!isEq())
             error()
@@ -205,16 +204,14 @@
             set(id, v)
           if (isSemi())
             consume(1)
-          1
+          return 1
         } else if (isLeftBlock()) {
-		println("isLeft")
             consume(1)
             seq(value)
             if (!isRightBlock())
               error()
-            1
+            return 1
         } else if (isIf()) {
-		println("isIf")
           consume(2)
           var c : Int = expression()
           if ((c != 0) && (value != 0))
@@ -223,15 +220,14 @@
              statement(0)
           if (isElse()) {
             consume(4)
-            if ((c == 0) && (value == 0)) 
+            if ((c == 0) && (value != 0)) 
                 statement(1)
             else
                 statement(0)
-            0
+            return 0
           }
-          1
+          return 1
         } else if (isWhile()) {
-		println("isWhile")
           consume(5)
           var progTextCopy : String = programText.substring(index)
           var c : Int = 0
@@ -243,22 +239,19 @@
             else 
               statement (0)
           } while ((c != 0) && (value != 0))
-          1
+          return 1
          } else if (isSemi()) {
-	println("isSemi")	
            consume(1)
-           1
+           return 1
          } else 
-           0
+           return 0
       }
       
       def seq(value:Int) {
-	println("seq")
         while(statement(value) == 1) {}
       }
       
       def program() {
-	println("program")
         seq(1)
         if (!isEnd())
           error()
@@ -266,7 +259,6 @@
       
       def main (args: Array[String]) : Unit = {
         programText = args(0).replace(" ", "")
-	println(programText)
         program()
       }
     }
