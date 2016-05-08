@@ -1,0 +1,12 @@
+Team members:
+Yasmine Zakout, Benny Singer
+
+
+
+
+
+Proposal:
+We would like to implement an interpreter for the language defined in p2 using Scala.  This would build upon our previous work by allowing us to work with a programming language which is both object-oriented and functional, and give us the chance to take advantage of those features. 
+It would also allow us to better understand the code which was provided to us inthe lexer because we will have to re-implement it.
+Furthermore, Scala lacks the same emphasis on certain features such as pointers, which lower-level languages like C possess.  We expect that this project will give us even more appreciation for these tools.
+We have also never programmed in Scala before, and we feel that this would be an excellent opportunity to learn it.
