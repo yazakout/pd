@@ -1,4 +1,4 @@
-  import scala.collection.mutable.{Map, SynchronizedMap, HashMap}
+import scala.collection.mutable.{Map, SynchronizedMap, HashMap}
 
 class pd {
       
@@ -24,11 +24,8 @@ class pd {
       }
       
       def error() {
-        println(programText.substring(index))
-        
+        print(s"Error at " + programText.substring(index));
       }
-      
-      
       
       def getInt() : Int = {
         var currentNum : Int = -1
@@ -66,7 +63,43 @@ class pd {
       }
       
       def isLeftBlock() : Boolean = {
-        true
+        programText.charAt(index) == '{'
+      }
+
+      def isRightBlock() : Boolean = {
+        programText.charAt(index) == '}'
+      }
+
+      def isWhile() : Boolean = {
+        programText.substring(index, index + 5).equals("while")
+      }
+
+      def isIf() : Boolean = {
+        programText.substring(index, index + 2).equals("if")
+      }
+
+      def isElse() : Boolean = {
+        programText.substring(index, index + 4).equals("else")
+      }
+
+      def isSemi() : Boolean = {
+        programText.charAt(index) == ';'
+      }
+
+      def isEq() : Boolean = {
+        programText.charAt(index) == '='
+      }
+
+      def isEqEq() : Boolean = {
+        programText.charAt(index) == '=' && programText.charAt(index) == '='
+      }
+
+      def isLeft() : Boolean = {
+        programText.charAt(index) == '('
+      }
+
+      def isRight() : Boolean = {
+        programText.charAt(index) == ')'
       }
       
       def isInt() : Boolean = {
@@ -174,3 +207,4 @@ class pd {
       }
     }
  }
+
