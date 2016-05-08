@@ -15,6 +15,7 @@ class pd {
       }
     
       def set(id:String, value:Int) {
+          println(id + ":" + value)
           symTable + (id -> value)
       }
       
