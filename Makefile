@@ -1,19 +1,21 @@
-SRC = p2.scala
-SOURCES = $(shell ls $(SRC)/*.scala)
-S = scala
-SC = scalac
-TARGET = target
-CP = $(TARGET):scalatest.jar
-SPEC = scala.RomanSpec
+CFLAGS=-g -std=c99 -O0 -Werror -Wall
 
-compile: $(SOURCES:.scala=.class)
+pd.scala : Makefile
+	scalac pd.scala
 
-%.class: %.scala
-	@echo "Compiling $*.scala.."
-	@$(SC) -cp $(CP) -d . $*.scala
+TESTS=$(sort $(wildcard *.test))
+RUNS=$(patsubst %.test,%.run,$(TESTS))
 
-test: compile
-	@$(S) -cp $(CP) org.scalatest.tools.Runner -p . -o -s $(SPEC)
+test : $(RUNS)
 
-clean:
-	@$(RM) $(SRC)/*.class
+$(RUNS) : %.run : %.test Makefile pd.scala
+	@echo -n "[$*] \"`cat $*.test`\" ... "
+	@-scala pd.scala $*.test`" > $*.out
+	@((diff -b $*.out $*.ok > /dev/null) && echo "pass") || (echo "fail" ; echo "--- expected ---"; cat $*.ok; echo "--- found ---" ; cat $*.out)
+
+clean :
+	rm -f *.d
+	rm -f *.o
+	rm -f pd
+
+-include *.d
