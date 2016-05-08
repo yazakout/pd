@@ -1,0 +1,63 @@
+[0m[[0mdebug[0m] [0m[naha] [0m
+[0m[[0mdebug[0m] [0m[naha] Initial source changes: [0m
+[0m[[0mdebug[0m] [0m[naha] 	removed:Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	added: Set(/Users/yasminezakout/Documents/S16/429H/pd/p2.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] 	modified: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated products: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] External API changes: API Changes: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Modified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Initial directly invalidated sources: Set(/Users/yasminezakout/Documents/S16/429H/pd/p2.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] [0m
+[0m[[0mdebug[0m] [0m[naha] Sources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m[naha] 	product: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/Users/yasminezakout/Documents/S16/429H/pd/p2.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Recompiling all 1 sources: invalidated sources (1) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 1 Scala source to /Users/yasminezakout/Documents/S16/429H/pd/target/scala-2.10/classes...[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.11:component from component compiler for Scala 2.10.6[0m
+[0m[[0minfo[0m] [0m'compiler-interface' not yet compiled for Scala 2.10.6. Compiling...[0m
+[0m[[0mdebug[0m] [0mPlain interface to Scala compiler 2.10.6  with arguments: [0m
+[0m[[0mdebug[0m] [0m	-nowarn[0m
+[0m[[0mdebug[0m] [0m	-d[0m
+[0m[[0mdebug[0m] [0m	/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_4630336a[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/classes:/Users/yasminezakout/.sbt/boot/scala-2.10.6/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/Users/yasminezakout/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/xsbti/interface-0.13.11.jar:/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_883132f3/srcs/org.scala-sbt/compiler-interface/compiler-interface-0.13.11-sources.jar:/Users/yasminezakout/.sbt/boot/scala-2.10.6/lib/scala-compiler.jar:/Users/yasminezakout/.sbt/boot/scala-2.10.6/lib/jansi.jar:/Users/yasminezakout/.sbt/boot/scala-2.10.6/lib/scala-reflect.jar:/Users/yasminezakout/.sbt/boot/scala-2.10.6/lib/jline.jar[0m
+[0m[[0mdebug[0m] [0m	/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_9d8676ea/xsbt/API.scala[0m
+[0m[[0mdebug[0m] [0m	/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_9d8676ea/xsbt/Analyzer.scala[0m
+[0m[[0mdebug[0m] [0m	/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_9d8676ea/xsbt/Command.scala[0m
+[0m[[0mdebug[0m] [0m	/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_9d8676ea/xsbt/Compat.scala[0m
+[0m[[0mdebug[0m] [0m	/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_9d8676ea/xsbt/CompilerInterface.scala[0m
+[0m[[0mdebug[0m] [0m	/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_9d8676ea/xsbt/ConsoleInterface.scala[0m
+[0m[[0mdebug[0m] [0m	/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_9d8676ea/xsbt/DelegatingReporter.scala[0m
+[0m[[0mdebug[0m] [0m	/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_9d8676ea/xsbt/Dependency.scala[0m
+[0m[[0mdebug[0m] [0m	/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_9d8676ea/xsbt/ExtractAPI.scala[0m
+[0m[[0mdebug[0m] [0m	/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_9d8676ea/xsbt/ExtractUsedNames.scala[0m
+[0m[[0mdebug[0m] [0m	/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_9d8676ea/xsbt/LocateClassFile.scala[0m
+[0m[[0mdebug[0m] [0m	/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_9d8676ea/xsbt/Log.scala[0m
+[0m[[0mdebug[0m] [0m	/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_9d8676ea/xsbt/Message.scala[0m
+[0m[[0mdebug[0m] [0m	/var/folders/kr/14jtmhf11qs9q7q1klqh29f40000gn/T/sbt_9d8676ea/xsbt/ScaladocInterface.scala[0m
+[0m[[0minfo[0m] [0m  Compilation completed in 10.654 s[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.11:component from component compiler for Scala 2.10.6[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 3d8a54a0, interfacing (CompilerInterface) with Scala compiler version 2.10.6[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/classes:/Users/yasminezakout/.sbt/boot/scala-2.10.6/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/Users/yasminezakout/Documents/S16/429H/pd/target/scala-2.10/classes[0m
+[0m[[0mdebug[0m] [0mScala compilation took 13.068955804 s[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating /Users/yasminezakout/Documents/S16/429H/pd/p2.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from /Users/yasminezakout/Documents/S16/429H/pd/p2.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(/Users/yasminezakout/Documents/S16/429H/pd/p2.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(/Users/yasminezakout/Documents/S16/429H/pd/p2.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The /Users/yasminezakout/Documents/S16/429H/pd/p2.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, isElse, program, wait, currName, $asInstanceOf, e1, equals, isEnd, numNames, asInstanceOf, isId, isLeft, set, synchronized, isEq, $isInstanceOf, statement, main, isMul, e4, notifyAll, isInt, isInstanceOf, isLeftBlock, isPlus, isSemi, <init>, isRightBlock, e3, error, expression, pd, ==, isRight, clone, getInt, symTable, isWhile, isIf, toString, seq, isSpace, !=, get, consume, getClass, isEqEq, e2, programText, ne, getId, eq, interpret, ##, finalize, index, hashCode.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] New invalidations:[0m
+[0m[[0mdebug[0m] [0m[naha] 	Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Previously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0mdebug[0m] [0m[naha] 	Set()[0m
+[0m[[0mdebug[0m] [0m[naha] All newly invalidated sources after taking into account (previously) recompiled sources:Set()[0m
