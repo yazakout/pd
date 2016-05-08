@@ -28,7 +28,7 @@
       
       def error() {
         println("error at " + "'" + programText.substring(index) + "'");
-	System.exit(1)
+	System.exit(0)
       }
       
       def getInt() : Int = {
