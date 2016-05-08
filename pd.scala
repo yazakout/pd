@@ -93,7 +93,7 @@
       }
       
       def isEnd() : Boolean = {
-	index == programText.length() - 1
+	index == programText.length()
       }
 
       def isWhile() : Boolean = {
@@ -152,6 +152,7 @@
           consume(1)
           var v :Int = expression()
           if (!isRight()) { 
+		println("fuck this rightParen")
             error()
 	}
           consume(1)
@@ -166,6 +167,8 @@
           consume(id.length()) 
           return get(id)
         } else {
+	
+		println("fuck this e1")
 	error
 	}
         return 0
@@ -217,12 +220,13 @@
             consume(1)
           return 1
         } else if (isLeftBlock()) {
-		println("isLeftBlock()")
             consume(1)
             seq(value)
             if (!isRightBlock()) {
-              error()
+		println("fuck this rightBlock")
+             error()
             }
+	    consume(1)
             return 1
         } else if (isIf()) {
           consume(2)
@@ -260,7 +264,6 @@
 		consume(1)
 		return 1
         } else {
-	   println("ending: " + programText.substring(index))
            return 0
 	}
       }
@@ -271,10 +274,10 @@
       
       def program() {
         seq(1)
-        /*if (!isEnd()) {
+        if (!isEnd()) {
 	  println("fuck you")
           error()
-	}*/
+	}
       }
       
       def main (args: Array[String]) : Unit = {
